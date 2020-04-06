@@ -14,13 +14,14 @@ const BlogForm = ({onSubmit, initialValues}) => {
         />
         <Text style={style.label}>Enter Content</Text>
         <TextInput 
-            style={style.input}
+            multiline={true}
+            style={style.inputTextArea}
             value={content}
             onChangeText={setContent}
         />
         <Button 
             title="Save Blog Post" 
-            onPress={onSubmit} 
+            onPress={() => onSubmit(title, content)} 
         />
     </View>
 }
@@ -41,6 +42,15 @@ const style  = StyleSheet.create({
         marginBottom: 20,
         padding:5,
         margin:5
+    },
+    inputTextArea:{
+        fontSize:18,
+        borderWidth: 1,
+        borderColor: 'black',
+        marginBottom: 20,
+        padding:5,
+        margin:5,
+        height:80
     },
     label: {
         fontSize: 20,

@@ -8,14 +8,28 @@ const BlogDetailsScreen = ({navigation, blogState}) => {
     let blogPost = blogState.find(blogPost => blogPost.id === id);
 
     return <View style={style.container}>
-        <Text>{blogPost.title}</Text>
-        <Text>{blogPost.content}</Text>
+        <Text style={style.titleStyle}>{blogPost.title}</Text>
+        <Text style={style.contentStyle}>{blogPost.content}</Text>
     </View>
 }
 
 const style  = StyleSheet.create({
     container:{
         flex: 1
+    },
+    titleStyle:{
+        fontSize:18,
+        marginBottom:10,
+        marginHorizontal:5
+    },
+    contentStyle: {
+        fontSize:15,
+        marginBottom:5,
+        marginHorizontal:5
+    },
+    headerIconStyle: {
+        fontSize:30,
+        marginRight:10
     }
 })
 
@@ -33,7 +47,7 @@ BlogDetailsScreenExtended.navigationOptions = ({navigation}) => {
                             })
                     }
                 >
-                    <FontAwesome name='pencil' size={30}/>
+                    <FontAwesome name='pencil' style={style.headerIconStyle}/>
                 </TouchableOpacity>
             )
         }

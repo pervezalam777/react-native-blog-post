@@ -9,6 +9,7 @@ const IndexScreen = ({blogState, deleteBlogPost, navigation}) => {
             data={blogState}
             keyExtractor={post => post.id}
             renderItem={({item}) => {
+                console.log('item..', item)
                 return (
                     <TouchableOpacity onPress={() => navigation.navigate('BlogDetails', {id:item.id})}>
                         <View style={style.listItemStyle}>
@@ -45,6 +46,10 @@ const style  = StyleSheet.create({
     listItemIconStyle:{
         fontSize:24,
         marginRight:15
+    },
+    headerIconStyle: {
+        fontSize:30,
+        marginRight:10
     }
 
 })
@@ -55,7 +60,7 @@ IndexScreenExtended.navigationOptions = ({navigation}) => {
     return {
         headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate('AddBlog')}>
-                <Feather name='plus' size={30} />
+                <Feather name='plus' style={style.headerIconStyle} />
             </TouchableOpacity>
         )
     }

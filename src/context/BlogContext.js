@@ -4,12 +4,12 @@ const ADD_POST = 'add_post';
 const UPDATE_POST = 'edit_post';
 const DELETE_POST = 'delete_post';
 
-const blogReducer = (state, action) => {
-    switch(action.type) {
+const blogReducer = (state, {type, payload}) => {
+    switch(type) {
         case ADD_POST:
             return [...state, {
                 id: ''+Math.ceil(Math.random()*9999),
-                ...action.payload
+                ...payload
             }]
         case UPDATE_POST:
             return state.map(post => {
