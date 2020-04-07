@@ -1,15 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import withBlogContext from "../context/withBlogContext";
 import {Feather} from '@expo/vector-icons'
 
-const IndexScreen = ({blogState, deleteBlogPost, navigation}) => {
+const IndexScreen = ({blogState, deleteBlogPost, getBlogPost, navigation}) => {
+
+    //Following will run only one time since second argument is []
+    useEffect(() => {
+        getBlogPost();
+
+        const listener = navigation.addListener('didFocus', () => {
+            getBlogPost();
+        });
+
+        return () => {
+            listener.remove();
+        };
+    }, [])
     return <View style={style.container}>
         <FlatList 
             data={blogState}
             keyExtractor={post => post.id}
             renderItem={({item}) => {
-                console.log('item..', item)
                 return (
                     <TouchableOpacity onPress={() => navigation.navigate('BlogDetails', {id:item.id})}>
                         <View style={style.listItemStyle}>
