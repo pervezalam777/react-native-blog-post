@@ -1,6 +1,11 @@
 # Blog Post
 This is a sample application for blog post
 
+
+## Server side
+Please refer [blog-post-server](https://github.com/pervezalam777/blog-post-server) for local server side integration.
+**NOTE** You would need to update baseURL: 'http://6c7158f7.ngrok.io' in jsonServer.js file. Instruction for this url provided in the blog-post-server repository.
+
 ## React Navigation Fix for v4
 As react navigation v5 released with breaking changes, we are using stable version of v4
 
